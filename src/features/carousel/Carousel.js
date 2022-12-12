@@ -4,13 +4,6 @@ import React, { useState, useEffect } from "react";
 export const Carousel = ({change}) => {
     const [imageLink, setImageLink] = useState('../../assets/default.jpg');
 
-    const backgroundImageStyle = {
-        filter: 'blur(2px) brightness(50%)',
-        opacity: '0.9',
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-    }
 
     const changeImage = async () => {
         try {
@@ -30,6 +23,6 @@ export const Carousel = ({change}) => {
         changeImage()
     },[change])
 
-    return(<img style={backgroundImageStyle} src={imageLink} alt='background'/>)
+    return(<img  src={imageLink} className='carousel-image' alt='background'/>)
 
 }

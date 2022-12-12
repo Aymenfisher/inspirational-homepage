@@ -1,69 +1,196 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
-html{
+html {
     font-size: 18px;
     color: white;
     font-family: "Roboto", sans-serif;
 }
 
-body,#root,.app{
+body,
+#root,
+.app {
     width: 100vw;
     height: 100vh;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
-.app-background,.app-content{
+.app-background,
+.app-content {
     width: 100%;
     height: 100%;
 }
-.app-background{
+
+.app-background {
     overflow: hidden;
 }
-.app-content{
+
+.carousel-image {
+    filter: blur(2px) brightness(50%);
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.app-content {
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     z-index: 2;
     display: grid;
-    grid-template: 1fr 4fr 1fr / 1fr 4fr 1fr;
+    grid-template: 1fr 4fr 1fr / 1fr 8fr 1fr;
 }
 
-.weather{
+.weather {
     grid-area: 1 /1 / span 1 / span 3;
     justify-self: end;
     align-self: end;
 }
 
-.todo-app{
-    /*border: 1px solid red;*/
+.weather-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 60px;
+}
+
+.weather-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+#temperature {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+}
+
+#weather-description {
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.container {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.todo-app {
     grid-area: 2 / 2 / span 1 / span 1;
     display: grid;
-    grid-template: 30% 60% / 1fr;
-    gap: 10%;
+    grid-template: 20% 75% / 1fr;
+    gap: 5%;
 }
 
-.todo-app *{
+.todo-app * {
     margin: 0;
-    /*border: 1px solid green;*/
 }
 
-.left-arrow{
+.todo-form {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#todo-input {
+    background: none;
+    border: none;
+    border-bottom: 3px solid white;
+    outline: none;
+    caret-color: white;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.todo-container {
+    padding: 20px;
+}
+
+.todo-list {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.todo-item {
+    backdrop-filter: none;
+    padding: 10px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr/ 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.todo-buttons {
+    justify-self: end;
+    display: flex;
+    gap: 5px;
+    transform: translate(10px, calc(-50% - 10px));
+    visibility: hidden;
+
+}
+
+#remove {
+    background: rgba(208, 2, 27, 0.25);
+}
+
+#done {
+    background: rgba(80, 227, 194, 0.25);
+}
+
+.todo-button {
+    backdrop-filter: none;
+    font-weight: 600;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+.todo-button:hover {
+    filter: drop-shadow(0 0 2px white);
+    transition: filter .2s ease-in;
+}
+
+.todo-item:hover>.todo-buttons {
+    visibility: visible !important;
+}
+
+.left-arrow {
     grid-area: 2 / 1 / span 1 / span 1;
 }
 
-.right-arrow{
+.right-arrow {
     grid-area: 2 / 3 / span 1 / span 1;
 }
 
-.quote{
+.quote {
     grid-area: 3 / 1 / span 1 / span 3;
     justify-self: center;
 }
 
+.quote-author {
+    color: white;
+    opacity: 0.5;
+}
+
 /* style buttons as arrows */
 
-.arrow{
+.arrow {
     background: none;
     border: none;
     align-self: center;
@@ -72,10 +199,10 @@ body,#root,.app{
     height: 40px;
 }
 
-.arrow:hover{
+.arrow:hover {
     opacity: 0.5;
 }
 
-.quote{
+.quote {
     text-align: center;
 }

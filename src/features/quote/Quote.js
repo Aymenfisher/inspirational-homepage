@@ -27,7 +27,7 @@ export const Quote = () => {
     return(
         <>
         <p className='quote-content'> {`"${quote.content}"`} </p>
-        <span className='quote-author' style={{color:'white',opacity:'0.5'}}>{quote.author}</span>
+        <span className='quote-author'>{quote.author}</span>
         </>
     )
 }

@@ -29,7 +29,7 @@ export const TodoForm = () => {
 
     return(
         <form onSubmit={handleSubmit} className='todo-form container'>
-            <label htmlFor="todo-input" style={{fontSize:'2rem',fontWeight:'700'}}>What's on your mind today?</label>
+            <label htmlFor="todo-input" id='input-label'>What's on your mind today?</label>
             <input type='text' value={todo} id='todo-input' onChange={handleChange}></input>
         </form>
     )

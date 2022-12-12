@@ -1,48 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import Confetti from "react-dom-confetti";
-import { toggleCompletion,removeTodo } from "./todoSlice.js";
+import { toggleCompletion, removeTodo } from "./todoSlice.js";
 import { useDispatch } from "react-redux";
 
 
 export const Todo = ({
-    todo
+    todo,
+    index
 }) => {
 
-    // Set next Added todo Background Color 
-    const chooseTodoColor = (previousColor) => { //choose todo item background color based on previous todo bg color
-        switch (previousColor) {
-            case 'blue':
-                return 'red'
-            case 'red':
-                return'green'
-            case 'green':
-                return'orange'
-            case 'orange':
-                return'blue'
-            default:
-                return'blue'
-        }
-    }
-    const bgColors = {
-        blue: 'rgba(69, 123, 157, 0.25)',
-        red: 'rgba(230, 57, 70, 0.25)',
-        green: 'rgba(88, 129, 87, 0.25)',
-        orange: 'rgba(247, 127, 0, 0.25)'
+    const dispatch = useDispatch();
 
+    const handleRemoveTodo = () => {
+        dispatch(removeTodo(todo.id))
+    }
+    const handleCompletedTodo = () => {
+        dispatch(toggleCompletion(todo.id))
     }
 
-
-
-
+    const bgColorsClassNames = ['blue-background ','red-background ','green-background ','orange-background ']
+    const bgClassName = bgColorsClassNames[index%bgColorsClassNames.length]
 
 
     return (
-            <div className="todo-item container">
-                <div className="todo-buttons">
-                    <button id='remove' className="todo-button container">Remove</button>
-                    <button id='done' className="todo-button container">Done</button>
-                </div>
-                <p id='todo-text'> sss</p>
+        <div className={"todo-item container"+" "+bgClassName+(todo.completed ? ' completed-todo' : '')}>
+            <div className="todo-buttons">
+                <button id='remove' className="todo-button container" onClick={handleRemoveTodo}>Remove</button>
+                <button id='done' className="todo-button container" onClick={handleCompletedTodo}><Confetti active={todo.completed} config={{ spread: 360,startVelocity: 15,duration:1500}} />{todo.completed ? 'Redo' : 'Done'}</button>
             </div>
+            <p id='todo-text'> {todo.text}</p>
+        </div>
     )
 }

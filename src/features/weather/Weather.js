@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 
 export const Weather = () => {
-    const [weather, setWeather] = useState({})
+    const [weather, setWeather] = useState({temperature:'--',description:'--',icon:'--'})
 
     const fetchUserIp = async () => { // get User IP ADDRESS
         try {

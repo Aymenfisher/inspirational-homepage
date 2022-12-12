@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+@import-normalize;
 
 html {
     font-size: 18px;
@@ -40,7 +41,7 @@ body,
     left: 0;
     z-index: 2;
     display: grid;
-    grid-template: 1fr 4fr 1fr / 1fr 8fr 1fr;
+    grid-template: 1fr 4fr 1fr / 1fr 13fr 1fr;
 }
 
 .weather {
@@ -64,7 +65,7 @@ body,
 }
 
 #temperature {
-    font-size: 1.5rem;
+    font-size: max(14px,1.5rem);
     font-weight: 700;
     margin-bottom: 0;
     letter-spacing: 1px;
@@ -72,21 +73,24 @@ body,
 
 #weather-description {
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: min(1rem,16px);
 }
 
 .container {
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .todo-app {
+    min-width: 245px;
     grid-area: 2 / 2 / span 1 / span 1;
     display: grid;
-    grid-template: 20% 75% / 1fr;
-    gap: 5%;
+    grid-template: 23% 75% / 1fr;
+    gap: 2%;
+    overflow:auto;
 }
 
 .todo-app * {
@@ -94,11 +98,15 @@ body,
 }
 
 .todo-form {
-    padding: 15px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     text-align: center;
+}
+#input-label{
+    font-size:2rem;
+    font-weight:700;
 }
 
 #todo-input {
@@ -108,8 +116,9 @@ body,
     outline: none;
     caret-color: white;
     color: white;
-    font-size: 1.5rem;
+    font-size: max(16px,1.5rem);
     text-align: center;
+    height: 50%;
 }
 
 .todo-container {
@@ -120,36 +129,53 @@ body,
     width: 100%;
     height: 100%;
     display: inline-flex;
-    justify-content: flex-start;
+    flex-wrap:wrap;
+    align-items: flex-start;
     align-content: flex-start;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    justify-items: center;
     gap: 20px;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.todo-list::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
 }
 
 .todo-item {
+    max-height: 80px;
     backdrop-filter: none;
+    width: fit-content;
     padding: 10px;
     display: grid;
     grid-template: 1fr 1fr 1fr/ 1fr;
     align-items: center;
     justify-items: center;
+    font-size: 1rem;
 }
 
 .todo-buttons {
     justify-self: end;
     display: flex;
     gap: 5px;
-    transform: translate(10px, calc(-50% - 10px));
+    transform: translate(10px, calc(-50% + 2.5px));
     visibility: hidden;
-
 }
 
 #remove {
+    font-size: min(16px,1rem);
     background: rgba(208, 2, 27, 0.25);
 }
 
 #done {
+    font-size: min(16px,1rem);
     background: rgba(80, 227, 194, 0.25);
+}
+
+.completed-todo {
+    opacity: .4;
 }
 
 .todo-button {
@@ -160,6 +186,26 @@ body,
     cursor: pointer;
     outline: none;
 }
+
+/* setting background color for each todo item container */
+.blue-background {
+    background: rgba(69, 123, 157, .4);
+}
+
+.red-background {
+    background: rgba(230, 57, 70, .4);
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%) ;
+}
+
+.green-background {
+    background: rgba(88, 129, 87, .4);
+}
+
+.orange-background {
+    background: rgba(247, 127, 0, .4);
+}
+/* end */ 
+
 
 .todo-button:hover {
     filter: drop-shadow(0 0 2px white);
@@ -205,4 +251,23 @@ body,
 
 .quote {
     text-align: center;
+    width: 80%;
+}
+
+@media screen and (max-width:650px){
+    html{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width:432px){
+    .todo-form{
+        padding: 10px;
+    }
+    #input-label{
+        font-size: max(1.2rem,16px);
+    }
+}
+
+@media screen and (max-height: 702px) {
+    
 }

@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 
 export const TodoList = () => {
 
-    const todos = useSelector(selectTodos);
+    const todos = Object.entries(useSelector(selectTodos));
 
     return (
         <div className="todo-list">
-            {todos.map((todo) => <Todo todo={todo}/>)}
+            {todos.map((todo,index) => { return <Todo todo={todo[1]} key={todo[0]} index={index} /> })}
         </div>
 
     )

@@ -259,9 +259,12 @@ body,
         font-size: 12px;
     }
 }
-@media screen and (max-width:432px){
+@media screen and (max-width:437px){
     .todo-form{
         padding: 10px;
+    }
+    .todo-list {
+        justify-content: center;
     }
     #input-label{
         font-size: max(1.2rem,16px);
